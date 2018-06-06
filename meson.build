@@ -27,7 +27,8 @@ link_args = []
 
 if get_option('lua_cpp')
 	if cc.get_id() == 'msvc'
-		add_project_arguments('/TP', language: 'c')
+		add_project_arguments('/TP', '/EHa', language: 'c')
+		compile_args += [ '/EHa' ]
 	elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
 		# TODO: Verify that this works for clang
 		add_project_arguments('-x',  'c++', language: 'c')
